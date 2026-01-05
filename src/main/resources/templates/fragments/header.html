@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/css/styles.css">
+</head>
+<body>
+<header th:fragment="Header">
+    <div class="title-bar">
+        <div class="left-section">
+            <p>FOLLOW US</p>
+            <a href="https://facebook.com/"><img src="/static/icons/facebook.svg" alt="Facebook"></a>
+            <a href="https://x.com/"><img src="/static/icons/tweeter.svg"></a>
+            <a href="https://linkedin.com/"><img src="/static/icons/in.svg"></a>
+            <a href="https://google.com/"><img src="/static/icons/google.svg"></a>
+            <a href="https://youtube.com/"><img src="/static/icons/youtube.svg"></a>
+        </div>
+
+        <div class="center-section">
+            <a href="/home/">HOME</a>
+            <a href="/o-nas">About Us</a>
+            <a href="/extras/kontakt">Contact</a>
+        </div>
+
+        <div class="right-section">
+            <a href="/registration/">Register</a>
+
+        </div>
+    </div>
+</header>
+</body>
+</html>

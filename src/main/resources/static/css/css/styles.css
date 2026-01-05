@@ -1,0 +1,474 @@
+body
+{
+    font-family: 'Tahoma', sans-serif;
+    background-color: white;
+    margin: 0;
+}
+
+a img
+{
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(1);
+}
+
+a {
+    text-decoration: none;
+}
+
+header
+{
+    background-color: #371A45;
+    color: white;
+}
+
+.title-bar
+{
+    width: 80%;
+    background-color: #371A45;
+    color: white;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 14px;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.middle-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 10%;
+    margin-right: 30%;
+    padding: 10px;
+    margin-top:25px;
+}
+
+.left-section {
+    position: relative;
+    cursor: pointer;
+}
+
+.left-section:hover .category-dropdown {
+    display: block;
+}
+
+.category-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #371A45;
+}
+
+.center-section a {
+    color: black;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.title-bar-a
+{
+    background-color: #371A45;
+    width: 80%;
+    margin: auto;
+    height: 45px;
+}
+
+.title-bar-up
+{
+    background-color: #371A45;
+    width: 80%;
+    margin: auto;
+    height: 20px;
+}
+
+.title-bar-bottom
+{
+    background-color: #371A45;
+    width: 100%;
+    bottom: 0;
+    height: 20px;
+    text-align: center;
+    position: sticky;
+}
+
+.left-section, .center-section, .right-section 
+{
+    display: flex;
+    align-items: center;
+}
+
+.left-section a, .center-section a, .right-section a 
+{
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.right-section p 
+{
+    margin-right: 5px;
+}
+
+.center-section-b
+{
+    color: blue;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.center-section-buttons
+{
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 40px;
+    font-size: 1em;
+}
+
+.logo-container 
+{
+    width: 80%;
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 40px;
+    justify-content: space-between;
+}    
+  
+.logo-container img 
+{
+    width: 40%;
+    max-width: 100%;
+}
+
+.logo-container-text
+{
+    color: black;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 14px;
+    justify-content: space-between
+}
+
+.logo-text 
+{
+    margin-top: 5px;
+}
+
+.add-btn1
+{
+    text-decoration: none;
+    width: 30%;
+    height: 10%;
+    text-align: center;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 1em;
+    background-color: #371A45;
+    color: white;
+    border: 3px solid black;
+}
+
+.add-btn1:hover
+{
+    background-color: #8b35a8;
+}
+
+.add-btn2
+{
+    text-decoration: none;
+    width: 30%;
+    height: 10%;
+    text-align: center;
+
+    font-family: Tahoma, serif;
+    font-size: 1em;
+    background-color: white;
+    color: #371A45;
+    border: 1px solid black;
+}
+
+.add-btn2:hover
+{
+    background-color: #8b35a8;
+}
+
+.login
+{
+    margin-top: 10px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.main-adv
+{
+    color: black;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 80%;
+    height: 700px;
+    margin: auto;
+    padding: 10px;
+}
+
+.big_adv
+{
+    background-color: white;
+    width:60%;
+    height: 90%;
+    float: left;
+    border: 3px solid #D8D8D8;
+    border-radius: 10px;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.small_adv
+{
+    background-color: white;
+    width: 39%;
+    height: 44.5%;
+    float: right;
+    border: 3px solid #D8D8D8;
+    border-radius: 6px;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.small_adv:hover
+{
+    border: 3px solid #371A45;
+}
+
+.big_adv:hover
+{
+    border: 3px solid #371A45;
+}
+
+.small_adv + .small_adv
+{
+    margin-top: 0.1%;
+} 
+
+.main-category
+{
+    color: black;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 80%;
+    height: 480px;
+    margin: 10px auto auto;
+    padding: 10px;
+}
+
+.main-category2 {
+    color: black;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    height: 500px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.item + .item
+{
+    margin-right: 2%;
+}
+
+.item {
+    background-color: white;
+    border: 3px solid #D8D8D8;
+    border-radius: 6px;
+    width: 300px;
+    max-width: 95%;
+    height: 400px;
+    position: relative;
+    transition: border-color 0.3s, background-color 0.3s, transform 1s ease-in-out;
+}
+
+.item:hover {
+    background-color: white;
+    border: 3px solid #371A45;
+    border-radius: 6px;
+    width: 300px;
+    max-width: 95%;
+    height: 400px;
+    position: relative;
+}
+
+.item-name {
+    background-color: #D8D8D8;
+    color: #371A45;
+    text-align: center;
+    padding: 3px;
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    width: 98.5%;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.item:hover .item-name {
+    background-color: #371A45;
+    color: #D8D8D8;
+    text-align: center;
+    padding: 3px;
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    width: 98.5%;
+}
+
+.popularne-marki
+{
+    color: black;
+    font-family: 'Tahoma', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    padding: 15px;
+}
+
+.logo-grey-bar {
+    height: 300px;
+    filter: brightness(0) invert(1);
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon img {
+    height: 100px;
+    width: auto;
+}
+
+.icon span {
+    font-family: 'Tahoma', sans-serif;
+    font-size: 20px;
+    margin-top: 3px;
+    text-align: center;
+}
+
+.footer-right-section {
+    font-family: 'Tahoma', sans-serif;
+    margin-right: 10%;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+}
+
+.footer-bar-a
+{
+    background-color: #371A45;
+    height: 45px;
+    margin-top: 190px;
+}
+
+.social-icons img {
+    filter: invert(0);
+}
+
+.login-box
+{
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+.login-container
+{
+    width:33%;
+    justify-content: space-between;
+    display: inline-table;
+    align-items: center;
+}
+
+.login-r
+{
+    margin-top: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+    height:34px;
+    display: block;
+    justify-content: flex-start;
+}
+
+.text
+{
+    margin-top: 20px;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: flex-end;
+    text-align: end;
+}
+
+.top-products
+{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 30px;
+    height: 300px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.top1
+{
+    border-radius: 6px;
+    width: 48%;
+    display: flex;
+    height: 300px;
+    background-color: white;
+    border: 3px solid #D8D8D8;
+    transition: border-color 0.3s, background-color 0.3s, transform 1s ease-in-out;
+}
+
+.top1:hover
+{
+    border-radius: 6px;
+    width: 48%;
+    display: flex;
+    height: 300px;
+    background-color: white;
+    border: 3px solid #371A45;
+    transition: border-color 0.3s, background-color 0.3s, transform 1s ease-in-out;
+}
+
+.top1 + .top1
+{
+    margin: auto;
+}
+
+.item-link {
+    display: inline-block;
+    margin-right: 2%;
+    text-decoration: none;
+    color: inherit; /* Domyślny kolor tekstu, możesz dostosować do swoich potrzeb */
+}
+.forget-password-link {
+    font-size: 14px; /* Adjust the font size as needed */
+    text-decoration: underline;
+    margin-top: 10px; /* Adjust the margin as needed for spacing */
+    display: block; /* Ensures the link is on a new line */
+}

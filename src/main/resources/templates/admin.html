@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MyShop</title>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <link href="/css/css/css/styles.css" rel="stylesheet" type="text/css">
+    <style>
+        body.dark-mode {
+            background-color: #1c1c1c; /* Set your dark mode background color */
+            color: #ffffff; /* Set your dark mode text color */
+        }
+
+        .mode-button {
+            background-color: #8b35a8; /* Pink color for the button */
+            border-radius: 50%; /* Round shape */
+            padding: 10px 20px; /* Adjust padding as needed */
+            color: #fff; /* Text color */
+            border: none; /* Remove border */
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+<header>
+    <!-- Dark/Light mode button -->
+    <button class="btn btn-primary mode-button" onclick="toggleDarkMode()">Dark Mode</button>
+
+</header>
+<div class="logo-container d-flex justify-content-center align-items-center" style="height: 120%;">
+    <div></div>
+    <img alt="" src="/static/icons/logo.png">
+</div>
+
+<div class="main-content">
+    <div class="summary">
+        <h1>Add New Product</h1>
+
+        <form method="post" th:action="@{/admin/add-item}" th:object="${product}">
+            <label for="productName">Product Name:</label>
+            <input id="productName" name="productName" required th:field="*{productName}" type="text">
+
+            <label for="productDescription">Product Description:</label>
+            <textarea id="productDescription" name="productDesc" required th:field="*{productDesc}"></textarea>
+
+            <label for="productPrice">Product Price:</label>
+            <input id="productPrice" name="productPrice" required th:field="*{productPrice}" type="text">
+
+            <label for="productCategory">Product Category:</label>
+            <select id="productCategory" name="productCategory" required th:field="*{productCategory}">
+                <option value="Automotive">Automotive</option>
+                <option value="Clothes">Clothes</option>
+                <option value="Real-Estate">Real Estate</option>
+                <option value="Appliances">Appliances</option>
+                <option value="Jewelry">Jewelry</option>
+                <option value="Computers">Computers</option>
+            </select>
+
+
+            <button type="submit">Add</button>
+        </form>
+        <br>
+        <br>
+        <!-- Add a button to show orders -->
+        <button class="btn btn-primary" id="showOrdersBtn">Show Orders</button>
+
+        <!-- Orders list container -->
+        <div id="ordersListContainer" style="display: none;">
+            <h1>Orders List</h1>
+            <ul id="ordersList"></ul>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div>
+        <div class="login">
+            <a class="btn btn-secondary" href="/home/">Cancel</a>
+        </div>
+    </div>
+</div>
+
+<footer class="mt-5">
+    <div class="center-section d-flex flex-column align-items-center">
+        <!-- English: Follow Us text -->
+        <p class="mb-3">FOLLOW US</p>
+
+        <div class="d-flex">
+            <a class="icon-link" href="https://facebook.com/"><img alt="Facebook" src="/static/icons/facebook.svg"
+                                                                   style="width: 40px; height: 40px;"></a>
+            <a class="icon-link" href="https://x.com/"><img src="/static/icons/tweeter.svg"
+                                                            style="width: 40px; height: 40px;"></a>
+            <a class="icon-link" href="https://linkedin.com/"><img src="/static/icons/in.svg"
+                                                                   style="width: 40px; height: 40px;"></a>
+            <a class="icon-link" href="https://google.com/"><img src="/static/icons/google.svg"
+                                                                 style="width: 40px; height: 40px;"></a>
+            <a class="icon-link" href="https://youtube.com/"><img src="/static/icons/youtube.svg"
+                                                                  style="width: 40px; height: 40px;"></a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    $(document).ready(function () {
+        // Show Orders button click event
+        $("#showOrdersBtn").click(function () {
+            // Send AJAX request to get orders
+            $.get("/admin/showorders", function (orders) {
+                // Display orders dynamically
+                displayOrders(orders);
+            });
+        });
+
+        // Function to display orders dynamically
+        function displayOrders(orders) {
+            var ordersList = $("#ordersList");
+
+            // Clear existing list
+            ordersList.empty();
+
+            // Iterate through orders and add to the list
+            $.each(orders, function (index, order) {
+                var listItem = $("<li>").text(order.firstName + " " + order.lastName + " - " + order.created);
+                ordersList.append(listItem);
+            });
+
+            // Show the orders list container
+            $("#ordersListContainer").show();
+        }
+    });
+</script>
+<!-- Include Bootstrap JS (optional, if you need Bootstrap JavaScript features) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+</script>
+
+</body>
+</html>

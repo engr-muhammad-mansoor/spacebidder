@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="Header">
+    <div class="title-bar">
+        <div class="left-section">
+            <p>FOLLOW US</p>
+            <a href="https://facebook.com/"><img src="/static/icons/facebook.svg" alt="Facebook"></a>
+            <a href="https://x.com/"><img src="/static/icons/tweeter.svg"></a>
+            <a href="https://linkedin.com/"><img src="/static/icons/in.svg"></a>
+            <a href="https://google.com/"><img src="/static/icons/google.svg"></a>
+            <a href="https://youtube.com/"><img src="/static/icons/youtube.svg"></a>
+        </div>
+
+        <div class="center-section">
+            <a href="/home">Strona Główna</a>
+            <a href="/o-nas">O nas</a>
+            <a href="/kontakt">Kontakt</a>
+        </div>
+
+        <div class="right-section">
+            <a th:href="@{/order/cart}" class="cart-ico">
+                <div>
+                    <span>Koszyk (</span>
+                    <span th:text="${@cart.counter}"></span>
+                    <span>)</span>
+                    <span th:text="${@cart.sum}"></span>
+                    <span>zł</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+</header>
+</body>
+</html>

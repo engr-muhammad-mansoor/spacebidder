@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>List of All Product Categories</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #fdfdfd;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .dark-mode {
+            background-color: #1c1c1c;
+            color: #ffffff;
+        }
+
+        header {
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .mode-button {
+            background-color: #8b35a8;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .logo-container img {
+            width: 200px; /* Adjust the size as needed */
+        }
+
+        .container {
+            margin-top: 30px;
+        }
+
+        .category-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .category-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .dark-mode .category-card {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+
+        .category-button {
+            margin-top: 10px;
+            background-color: #8b35a8;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .category-button:hover {
+            background-color: #6b2472;
+        }
+
+        footer {
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid #ccc;
+            margin-top: 30px;
+        }
+
+        .icon-link img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+<header>
+    <!-- Return to Home button -->
+    <a href="/home/" class="btn btn-primary">Return to Home</a>
+
+    <!-- Dark/Light mode button -->
+    <button class="btn mode-button" onclick="toggleDarkMode()">Dark Mode</button>
+</header>
+
+<div class="logo-container">
+    <!-- English: Alt text for the logo -->
+    <img alt="SpaceBidder Logo" src="/static/icons/logo.png">
+</div>
+
+<div class="container">
+    <h2 class="text-center">List of All Product Categories</h2>
+
+    <div class="category-container">
+        <div th:each="category : ${distinctCategories}" class="category-card">
+            <!-- Display category name -->
+            <span th:text="${category}"></span>
+
+            <!-- Hidden input to pass category value to the server -->
+            <input type="hidden" name="category" th:value="${category}" />
+
+            <!-- Submit button for evaluation with dynamic href -->
+            <a th:href="@{'/evaluation/' + ${#strings.toLowerCase(category)}}"
+               class="btn category-button">Submit Evaluation</a>
+        </div>
+    </div>
+</div>
+<footer>
+    <div>
+        <p class="mb-3">FOLLOW US</p>
+
+        <div class="d-flex justify-content-center">
+            <a class="icon-link" href="https://facebook.com/"><img alt="Facebook" src="/static/icons/facebook.svg"></a>
+            <a class="icon-link" href="https://x.com/"><img src="/static/icons/tweeter.svg"></a>
+            <a class="icon-link" href="https://linkedin.com/"><img src="/static/icons/in.svg"></a>
+            <a class="icon-link" href="https://google.com/"><img src="/static/icons/google.svg"></a>
+            <a class="icon-link" href="https://youtube.com/"><img src="/static/icons/youtube.svg"></a>
+        </div>
+    </div>
+</footer>
+
+<!-- Include Bootstrap JS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+</script>
+</body>
+
+</html>

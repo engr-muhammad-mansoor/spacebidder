@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="3.3866mm" height="3.3866mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 339 339"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil1 {fill:#FF003D}
+    .fil0 {fill:#371A45;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g id="Warstwa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_849655728">
+   <polygon class="fil0" points="241,245 256,245 256,114 193,114 193,187 193,193 186,193 117,193 117,245 207,245 207,281 "/>
+   <path class="fil0" d="M48 187l14 0 34 37 0 -37 21 0 69 0 0 -73 0 -57 -138 0 0 130zm115 -76l0 0c3,0 6,2 8,3 2,3 4,6 4,9 0,7 -5,12 -12,12 -6,0 -12,-5 -12,-12 0,-3 2,-6 4,-9 3,-1 5,-3 8,-3zm-31 0l0 0c3,0 6,2 8,3 3,3 4,6 4,9 0,7 -5,12 -12,12 -6,0 -11,-5 -11,-12 0,-3 1,-6 4,-9 2,-1 5,-3 7,-3zm-30 1l0 0c6,0 11,5 11,11 0,7 -5,12 -11,12 -7,0 -12,-5 -12,-12 0,-6 5,-11 12,-11zm-31 0l0 0c7,0 12,5 12,11 0,7 -5,12 -12,12 -6,0 -12,-5 -12,-12 0,-6 6,-11 12,-11z"/>
+   <circle class="fil1" cx="246" cy="104" r="45"/>
+  </g>
+ </g>
+</svg>

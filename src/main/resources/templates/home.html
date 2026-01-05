@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SpaceBidder</title>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          rel="stylesheet">
+    <link href="/css/css/styles.css" rel="stylesheet" type="text/css">
+    <style>
+        body.dark-mode {
+            background-color: #1c1c1c; /* Set your dark mode background color */
+            color: #ffffff; /* Set your dark mode text color */
+        }
+
+        .mode-button {
+            background-color: #8b35a8; /* Pink color for the button */
+            border-radius: 50%; /* Round shape */
+            padding: 10px 20px; /* Adjust padding as needed */
+            color: #fff; /* Text color */
+            border: none; /* Remove border */
+        }
+
+        .evaluation-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .evaluation-buttons a {
+            margin: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #8b35a8; /* Purple color, similar to your dark mode button */
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .evaluation-buttons a:hover {
+            background-color: #6a266f; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+<header th:replace="~{fragments/header :: Header}">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+    </div>
+</header>
+
+<button class="btn mode-button" onclick="toggleDarkMode()">Dark Mode</button>
+<br>
+
+<!--BLOCK WITH LOGO AND TEXT ON THE RIGHT-->
+<div class="container-fluid">
+
+    <div class="logo-container d-flex justify-content-center align-items-center" style="height: 120%;">
+        <!-- English: Alt text for the logo -->
+        <img alt="SpaceBidder Logo" src="/static/icons/logo.png">
+    </div>
+
+    <div id="main-container">
+        <div id="center-container">
+            <div>
+                <!-- Check if the 'name' attribute is not null or empty -->
+                <span th:if="${not #strings.isEmpty(name)}">
+                <!-- Display a greeting message with the user's name -->
+                <span>Hello, <span th:text="${name}"></span></span>
+                <div class="btn-group">
+                    <a class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Actions</a>
+                    <div class="dropdown-menu">
+                        <a class="btn btn-primary" href="user/edit-user">Edit User</a>
+                        <a class="btn-primary" href="/">Logout</a>
+                        <a class="btn-primary" href="/admin/">Add Item</a>
+                    </div>
+                </div>
+            </span>
+
+                <!-- If the user is not logged in, show a login button -->
+                <span th:unless="${not #strings.isEmpty(name)}">
+                <a class="btn btn-primary" href="/login">Login</a>
+            </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="evaluation-buttons">
+        <a class="btn btn-primary" href="/evaluation/">Product Evaluation</a>
+        <a class="btn btn-primary" href="/evaluation/seller">Seller Evaluation</a>
+        <a class="btn btn-primary" href="/order/cart">View Cart</a>
+    </div>
+
+        <br><br>
+
+        <!-- Middle section - Categories and search bar -->
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-md-6 d-flex flex-column align-items-center">
+                    <div class="input-group category-list">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="categoryDropdown">Category</label>
+                        </div>
+                        <select class="custom-select" id="categoryDropdown">
+                            <option value="#">Clothing</option>
+                            <option value="#">Automotive</option>
+                            <option value="#">Computers</option>
+                            <option value="#">Jewelry</option>
+                            <option value="#">Appliances</option>
+                            <option value="#">Real Estate</option>
+                        </select>
+                    </div>
+                    <div class="input-group search-bar" style="margin-top: 10px;">
+                        <input class="form-control" placeholder="Search..." type="text">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" onclick="searchProducts()" type="button">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchProducts() {
+            var categoryDropdown = document.getElementById("categoryDropdown");
+            var selectedCategory = categoryDropdown.options[categoryDropdown.selectedIndex].text.toLowerCase();
+
+            // Get the value from the search input
+            var searchInput = document.querySelector('.search-bar input').value;
+
+            // Construct the URL based on the selected category and search input
+            var url = "/products/" + selectedCategory;
+
+            // Redirect to the constructed URL
+            window.location.href = url;
+        }
+    </script>
+
+
+
+</div>
+
+<!--BLOCK WITH CATEGORIES + HOME + ABOUT US + CONTACT-->
+<div class="middle-bar">
+    <div class="left-section">
+        <h2>ALL CATEGORIES</h2>
+        <div class="category-dropdown">
+            <p><a href="/products/automotive">Automotive</a></p>
+            <p><a href="/products/computers">Computers</a></p>
+            <p><a href="/products/real-estate">Real Estate</a></p>
+            <p><a href="/products/products/jewelry">Jewelry</a></p>
+            <p><a href="/products/products/appliances">Appliances</a></p>
+        </div>
+    </div>
+    <div class="right-section"></div>
+</div>
+
+<!--BLOCK FEATURED CATEGORIES-->
+<div class="main-category">
+    <h2>CATEGORIES</h2>
+    <div class="main-category2 row">
+
+        <div class="item col-md-2" style="margin-right: 2%">
+            <img class="img-fluid" src="/static.img/samochod.png" style="margin-top: 30%">
+            <a href="/products/automotive">
+                <div class="item-name">
+                    <p>AUTOMOTIVE</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="item col-md-2">
+            <img class="img-fluid" src="/static.img/house.png" style="margin-top: 25%">
+            <a href="/products/real-estate">
+                <div class="item-name">
+                    <p>REAL ESTATE</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="item col-md-2">
+            <img class="img-fluid" src="/static.img/komputer.png" style="margin-top: 25%">
+            <a href="/products/computers">
+                <div class="item-name">
+                    <p>COMPUTERS</p>
+                </div>
+            </a>
+        </div>
+        <div class="item col-md-2">
+            <img class="img-fluid" src="/static.img/agd.png" style="margin-top: 22%">
+            <a href="/products/appliances">
+                <div class="item-name">
+                    <p>APPLIANCES</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="item col-md-2">
+            <img class="img-fluid" src="/static.img/clothes.png" style="margin-top: 20%">
+            <a href="/products/clothing">
+                <div class="item-name">
+                    <p>CLOTHING</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="item col-md-2">
+            <img class="img-fluid" src="/static.img/jewelery.png" style="margin-top: 25%">
+            <a href="/products/jewelry">
+                <div class="item-name">
+                    <p>JEWELRY</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!--BLOCK LATEST PRODUCTS-->
+<div class="main-category">
+    <h2>LATEST PRODUCTS</h2>
+    <div class="main-category2 row">
+        <div class="item col-md-2" style="margin-right: 2%">
+            <img class="img-fluid" src="/static.img/samochod.png" style="margin-top: 30%">
+            <div class="item-name">
+                <p>AUTOMOTIVE</p>
+            </div>
+        </div>
+        <div class="item col-md-2">
+            <img class="img-fluid" src="/static.img/house.png" style="margin-top: 25%">
+            <div class="item-name">
+                <p>HOUSE WITH GARDEN</p>
+            </div>
+        </div>
+        <div class="item col-md-2">
+            <img class="img-fluid" src="/static.img/komputer.png" style="margin-top: 25%">
+            <div class="item-name">
+                <p>COMPUTERS</p>
+            </div>
+        </div>
+        <div class="item col-md-2">
+            <img class="img-fluid" src="/static.img/agd.png" style="margin-top: 22%">
+            <div class="item-name">
+                <p>APPLIANCES</p>
+            </div>
+        </div>
+        <div class="item col-md-2">
+            <img class="img-fluid" src="/static.img/clothes.png" style="margin-top: 20%">
+            <div class="item-name">
+                <p>CLOTHING</p>
+            </div>
+        </div>
+        <div class="item col-md-2">
+            <img class="img-fluid" src="/static.img/jewelery.png" style="margin-top: 25%">
+            <div class="item-name">
+                <p>JEWELRY</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="even-row-color d-flex justify-content-between align-items-center"
+         style="background-color: #D8D8D8; padding: 0 7%;">
+        <div class="col-md-2 icon">
+            <img class="logo-grey-bar img-fluid" src="/static/icons/sony.svg">
+        </div>
+        <div class="col-md-2 icon">
+            <img class="logo-grey-bar img-fluid" src="/static/icons/amica.svg">
+        </div>
+        <div class="col-md-2 icon">
+            <img class="logo-grey-bar img-fluid" src="/static/icons/kyocera.svg">
+        </div>
+        <div class="col-md-2 icon">
+            <img class="logo-grey-bar img-fluid" src="/static/icons/tesla.svg">
+        </div>
+        <div class="col-md-2 icon">
+            <img class="logo-grey-bar img-fluid" src="/static/icons/epson.svg">
+        </div>
+    </div>
+
+    <!--BLOCK WITH ICONS-->
+    <div class="row" style="background-color: white; padding: 0 10%; display: flex; justify-content: space-between;">
+        <div class="col-md-2 icon">
+            <img alt="" class="img-fluid" src="/static/icons/kontakt.svg">
+            <span><br>Contact 24/7</span>
+        </div>
+        <div class="col-md-2 icon">
+            <img alt="Icon 3" class="img-fluid" src="/static/icons/platnosci.svg">
+            <span>Online Payments <br> </span>
+        </div>
+        <div class="col-md-2 icon">
+            <img alt="" class="img-fluid" src="/static/icons/dymki+.svg">
+            <span>Free <br> return</span>
+        </div>
+        <div class="col-md-2 icon">
+            <img alt="Icon 3" class="img-fluid" src="/static/icons/ochrona.svg">
+            <span>Buyer's <br> Protection</span>
+        </div>
+        <div class="col-md-2 icon">
+            <img alt="" class="img-fluid" src="/static/icons/srodowisko.svg">
+            <span>Environmental <br> Care</span>
+        </div>
+        <div class="col-md-2 icon">
+            <img alt="Icon 3" class="img-fluid" src="/static/icons/gwarancja.svg">
+            <span>Up to 3 weeks <br> guarantee</span>
+        </div>
+    </div>
+
+    <!--FOOTER-->
+    <div class="row" style="background-color: #371A45; padding: 0 10%;">
+        <div class="col-md-3" style="color: white; font-family: 'Tahoma', sans-serif;">
+            <h3>FEATURED CATEGORIES:</h3>
+            <div style="color: white; font-family: 'Tahoma', sans-serif; ">
+                <p><a href="/products/computers" style="color: white;">Computers</a></p>
+                <p><a href="/products/automotive" style="color: white;">Automotive</a></p>
+                <p><a href="/products/appliances" style="color: white;">Appliances</a></p>
+                <p><a href="/products/real-estate" style="color: white;">Real Estate</a></p>
+            </div>
+        </div>
+        <div class="col-md-3" style="color: white; font-family: 'Tahoma', sans-serif;">
+            <h3>BEST SELLERS:</h3>
+            <div style="color: white; font-family: 'Tahoma', sans-serif;">
+                <!-- Iterate over the list of sellers and display their names in a single line -->
+                <p th:each="seller, iterStat : ${best}" th:if="${iterStat.index != #numbers.sequence(0, #lists.size(best)-1)} + ','"
+                   th:text="${seller.name}"></p>
+            </div>
+        </div>
+
+
+        <div class="col-md-3" style="color: white; font-family: 'Tahoma', sans-serif;">
+            <h3>OTHER:</h3>
+            <div style="color: white; font-family: 'Tahoma', sans-serif;">
+                <p><a href="/terms" style="color: white;">Terms of Service</a></p>
+                <p><a href="ex/about-us" style="color: white;">About Us</a></p>
+                <p><a href="extras/kontakt" style="color: white;">Contact</a></p>
+                <p><a href="extras/regulamin" style="color: white;">Returns</a></p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="logo">
+                <a href="/home">
+                    <img class="img-fluid" src="/static/icons/logo.png"
+                         style="width: 40%; height: auto; margin-top: 3%">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="background-color: #371A45; padding: 5px;">
+        <div class="col" style="margin-left: 10%; color: white; font-family: 'Tahoma', sans-serif;">
+            <p>Quick contact: <a href="tel:+123456789" style="color: white">123-456-789</a> |
+                <a href="mailto:spacebidder@spacebidder.com" style="color: white">spacebidder@spacebidder.com</a></p>
+        </div>
+    </div>
+    <!--FOLLOW US-->
+    <footer>
+        <div class="footer-bar">
+            <div class="footer-right-section">
+                <p style="color: black; align-items: center">FOLLOW US</p>
+                <div class="social-icons">
+                    <a href="https://facebook.com/"><img src="/static/icons/facebook.svg"></a>
+                    <a href="https://x.com/"><img src="/static/icons/tweeter.svg"></a>
+                    <a href="https://linkedin.com/"><img src="/static/icons/lupka.svg"></a>
+                    <a href="https://google.com/"><img src="/static/icons/google.svg"></a>
+                    <a href="https://youtube.com/"><img src="/static/icons/youtube.svg"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+</script>
+
+</body>
+</html>

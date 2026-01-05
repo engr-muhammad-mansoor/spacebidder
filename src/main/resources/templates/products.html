@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product List</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .card-img-top {
+            max-height: 450px;
+            max-width: 550px;
+            object-fit: cover;
+        }
+
+        .card {
+            background-color: #fff;
+            transition: background-color 0.3s ease;
+            color: #000; /* Set default text color */
+        }
+
+        body.dark-mode {
+            background-color: #333; /* Set your dark mode background color */
+            color: #ffffff; /* Set your dark mode text color */
+        }
+
+        .mode-button {
+            background-color: #8b35a8; /* Pink color for the button */
+            border-radius: 50%; /* Round shape */
+            padding: 10px 20px; /* Adjust padding as needed */
+            color: #fff; /* Text color */
+            border: none; /* Remove border */
+        }
+
+        .btn-add-to-cart {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        body.dark-mode .card {
+            background-color: #333; /* Set the card background color to dark in dark mode */
+        }
+
+        body.dark-mode .card-text,
+        body.dark-mode .card-title {
+            color: #fff; /* Set text color for cards in dark mode */
+        }
+        body.dark-mode footer {
+            background-color: #ffffff; /* Set the background color to white in dark mode */
+            color: #000000; /* Set the text color for the footer in dark mode to black or another dark color */
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <!-- Dark/Light mode button -->
+    <button class="btn mode-button" onclick="toggleDarkMode()">Dark Mode</button>
+</header>
+<div class="logo-container d-flex justify-content-center align-items-center" style="height: 60%;">
+    <!-- English: Alt text for the logo -->
+    <img alt="SpaceBidder Logo" src="/static/icons/logo.png">
+</div>
+
+<div class="container mt-2">
+    <h2 th:text="${category} + ' Products'"></h2>
+
+    <div th:each="product : ${products}">
+        <div>
+            <img th:src="${product.imgUrl}" class="card-img-top" alt="Product Image">
+            <div>
+                <h5 class="card-title" th:text="'Name : ' +${product.productName}"></h5>
+                <p class="card-text" th:text="'Description : ' +${product.productDesc}"></p>
+                <p class="card-text" th:text="'Price: $' + ${product.productPrice}"></p>
+                <!-- Add to Cart button -->
+                <form th:action="@{'/order/increase/' + ${product.productId}}" method="post">
+                    <button type="submit" class="btn btn-add-to-cart">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="mt-5">
+    <div class="center-section d-flex flex-column align-items-center">
+        <!-- English: Follow Us text -->
+        <p class="mb-3">FOLLOW US</p>
+
+        <div class="d-flex">
+            <a class="icon-link" href="https://facebook.com/"><img alt="Facebook" src="/static/icons/facebook.svg"
+                                                                   style="width: 40px; height: 40px;"></a>
+            <a class="icon-link" href="https://x.com/"><img src="/static/icons/tweeter.svg"
+                                                            style="width: 40px; height: 40px;"></a>
+            <a class="icon-link" href="https://linkedin.com/"><img src="/static/icons/in.svg"
+                                                                   style="width: 40px; height: 40px;"></a>
+            <a class="icon-link" href="https://google.com/"><img src="/static/icons/google.svg"
+                                                                 style="width: 40px; height: 40px;"></a>
+            <a class="icon-link" href="https://youtube.com/"><img src="/static/icons/youtube.svg"
+                                                                  style="width: 40px; height: 40px;"></a>
+        </div>
+    </div>
+</footer>
+
+<!-- Include Bootstrap JS (optional, if you need Bootstrap JavaScript features) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+</script>
+
+<!-- Include Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

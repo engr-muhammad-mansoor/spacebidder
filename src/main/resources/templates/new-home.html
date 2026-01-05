@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SpaceBidder</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/css/styles.css">
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            background-color: #f8f8f8; /* Light background color */
+            color: #333; /* Default text color */
+        }
+
+        body.dark-mode {
+            background-color: #1c1c1c;
+            color: #ffffff;
+        }
+
+        .mode-button {
+            background-color: #8b35a8;
+            border-radius: 50%;
+            padding: 10px 20px;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        header {
+            padding: 20px;
+            background-color: #371A45;
+            color: #fff;
+        }
+
+        .container-fluid {
+            padding: 20px;
+        }
+
+        .middle-bar, .main-category {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #371A45;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .social-icons a {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="~{fragments/header :: Header}">
+    <!-- Your header content here -->
+</header>
+
+<button class="btn mode-button" onclick="toggleDarkMode()">Dark Mode</button>
+
+<div class="container-fluid">
+    <div class="row justify-content-between align-items-center">
+        <!-- Left section - Logo -->
+        <div class="col">
+            <img src="/static/icons/logo.png" alt="Logo" class="img-fluid">
+        </div>
+
+        <!-- Middle section - Categories and search bar -->
+        <div class="col-6" style="display: flex; align-items: center; margin-right: 10%;">
+            <div class="category-list">
+                <label>
+                    <select class="form-control">
+                        <option value="#">All categories</option>
+                        <option value="#">Automotive</option>
+                        <option value="#">Computers</option>
+                        <option value="#">Jewelry</option>
+                        <option value="#">Appliances</option>
+                        <option value="#">Real Estate</option>
+                    </select>
+                </label>
+            </div>
+            <div class="search-bar" style="background-color: #371A45; margin-left: 10px;">
+                <input type="text" placeholder="Search..." class="form-control">
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary" style="margin-left: 1px;">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOCK WITH CATEGORIES + HOME + ABOUT US + CONTACT -->
+    <div class="middle-bar">
+        <div class="left-section">
+            <h2>ALL CATEGORIES</h2>
+            <div class="category-dropdown">
+                <p><a href="/automotive">Automotive</a></p>
+                <p><a href="/computers">Computers</a></p>
+                <p><a href="/realestate">Real Estate</a></p>
+                <p><a href="/jewelry">Jewelry</a></p>
+                <p><a href="/appliances">Appliances</a></p>
+            </div>
+        </div>
+
+        <div class="center-section col-md-6">
+            <a href="/home/" style="color: black; margin-right: 10px;">Home</a>
+            <a href="/extras/contact" style="color: black; margin-right: 10px;">Terms</a>
+            <a href="/extras/contact" style="color: black; margin-right: 10px;">Contact</a>
+        </div>
+        <div class="right-section"></div>
+    </div>
+
+    <!-- BLOCK FEATURED CATEGORIES -->
+    <div class="main-category">
+        <h2>CATEGORIES</h2>
+        <div class="main-category2 row">
+            <!-- Your category items here -->
+        </div>
+    </div>
+
+    <!-- BLOCK LATEST PRODUCTS -->
+    <div class="main-category">
+        <h2>LATEST PRODUCTS</h2>
+        <div class="main-category2 row">
+            <!-- Your latest product items here -->
+        </div>
+
+        <div class="even-row-color d-flex justify-content-between align-items-center"
+             style="background-color: #D8D8D8; padding: 0 7%;">
+            <!-- Your even-row-color content here -->
+        </div>
+    </div>
+
+    <!-- BLOCK WITH ICONS -->
+    <div class="row" style="background-color: white; padding: 0 10%; display: flex; justify-content: space-between;">
+        <!-- Your icon items here -->
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="row" style="background-color: #371A45; padding: 0 10%;">
+    <!-- Your footer content here -->
+</div>
+
+<div class="row" style="background-color: #371A45; padding: 5px;">
+    <div class="col" style="margin-left: 10%; color: white; font-family: 'Tahoma', sans-serif;">
+        <p>Quick contact: <a href="tel:+123456789" style="color: white">123-456-789</a> |
+            <a href="mailto:spacebidder@spacebidder.com" style="color: white">spacebidder@spacebidder.com</a></p>
+    </div>
+</div>
+
+<!-- FOLLOW US -->
+<footer>
+    <div class="footer-bar">
+        <div class="footer-right-section">
+            <p style="color: black; align-items: center">FOLLOW US</p>
+            <div class="social-icons">
+                <a href="https://facebook.com/"><img src="/static/icons/facebook.svg"></a>
+                <a href="https://x.com/"><img src="/static/icons/tweeter.svg"></a>
+                <a href="https://linkedin.com/"><img src="/static/icons/lupka.svg"></a>
+                <a href="https://google.com/"><img src="/static/icons/google.svg"></a>
+                <a href="https://youtube.com/"><img src="/static/icons/youtube.svg"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<a href="/evaluation/product" class="btn btn-primary">Go to Product Evaluation</a>
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+</script>
+</body>
+</html>
